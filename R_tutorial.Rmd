@@ -306,7 +306,7 @@ waggleSummary("data_in/20181215_00934.csv")
 
 We have just successfully made our first function!!! This still requires us to run each file separately. To overcome this obstacle, we use three more lines of code to cycle through all the files in a directory and provide the final dataset we require. The first of it (`list,files()`) creates a vector with the list of the files in the parent directory. `lapply` applies our function `waggleSummary` to all elements in the vector, and stores the output as a list of dataframes. The last line binds each dataframe row-wise and creates the final output.
 
-```{r}
+```{r error=TRUE}
 files = list.files(path = "data_in/", pattern = "*.csv", full.names = T)
 results = lapply(files, waggleSummary)
 waggle_out = as.data.frame(do.call(rbind, results))
