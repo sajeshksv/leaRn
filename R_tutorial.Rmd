@@ -275,8 +275,11 @@ waggleSummary = function(x){
   evenRows <- subsetData[as.numeric(rownames(subsetData)) %% 2 == 0,]
   endTimes <- evenRows$Time
   
-  # calculate duration vector
-  waggleDuration <- endTimes - startTimes
+  # make a subset table with the times
+  timeTable <- data.frame(startTimes, endTimes)
+  
+  # the duration vector for the bee is calculated by subtracting startTimes from endTimes
+  waggleDuration <- timeTable$endTimes - timeTable$startTimes
   
   # calculate mean and standard deviation of the durations
   meanWaggles <- mean(waggleDuration)
