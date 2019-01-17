@@ -590,6 +590,15 @@ waggleSummary = function(x){
   evenRows <- subsetData[as.numeric(rownames(subsetData)) %% 2 == 0,]
   endTimes <- evenRows$Time
   
+  # the following series of steps need to be done IF AND ONLY IF the number of start   
+  # time entries and the number of end time entries are equal. Hence, we introduce a 
+  # check in place, instructing R to skip this iteration of the for loop when this  
+  # equality condition is not satisfied.
+    
+  if(length(startTimes) != length(endTimes)){
+    next
+    }
+  
   # make a subset table with the times
   timeTable <- data.frame(startTimes, endTimes)
   
@@ -630,18 +639,95 @@ We have just successfully made our first function!!! This still requires us to r
 ``` r
 files = list.files(path = "data_in/", pattern = "*.csv", full.names = T)
 results = lapply(files, waggleSummary)
-```
-
-    ## Error in data.frame(startTimes, endTimes): arguments imply differing number of rows: 1, 0
-
-``` r
 waggle_out = as.data.frame(do.call(rbind, results))
-```
-
-    ## Error in do.call(rbind, results): object 'results' not found
-
-``` r
 waggle_out
 ```
 
-    ## Error in eval(expr, envir, enclos): object 'waggle_out' not found
+    ##                        trialID subjectName      waggle_mean
+    ## 2  data_in//20181215_00934.csv           1             9.96
+    ## 3  data_in//20181215_00934.csv           2            14.08
+    ## 4  data_in//20181215_00934.csv           3             7.88
+    ## 21 data_in//20181215_00935.csv           1             5.88
+    ## 31 data_in//20181215_00935.csv           2            18.84
+    ## 41 data_in//20181215_00935.csv           3            18.22
+    ## 5  data_in//20181215_00935.csv           4 7.95999999999999
+    ## 22 data_in//20181215_00937.csv           1            18.16
+    ## 32 data_in//20181215_00937.csv           2             23.2
+    ## 42 data_in//20181215_00937.csv           4            14.52
+    ## 51 data_in//20181215_00937.csv           5            23.84
+    ## 6  data_in//20181215_00937.csv           7            30.24
+    ## 23 data_in//20181217_00938.csv           1            14.64
+    ## 33 data_in//20181217_00938.csv           2             20.2
+    ## 43 data_in//20181217_00938.csv           3            15.24
+    ## 52 data_in//20181217_00938.csv           4            14.56
+    ## 61 data_in//20181217_00938.csv           5               26
+    ## 7  data_in//20181217_00938.csv           6             28.2
+    ## 8  data_in//20181217_00938.csv           7            22.44
+    ## 9  data_in//20181217_00938.csv           8             10.6
+    ## 10 data_in//20181217_00938.csv           9             17.6
+    ## 11 data_in//20181217_00938.csv          10            10.84
+    ## 12 data_in//20181217_00938.csv          11 5.60000000000001
+    ## 13 data_in//20181217_00938.csv          12            14.04
+    ## 14 data_in//20181217_00938.csv          13               65
+    ## 24 data_in//20181217_00940.csv           2            27.04
+    ## 34 data_in//20181217_00940.csv           3            23.36
+    ## 44 data_in//20181217_00940.csv           5             26.6
+    ## 53 data_in//20181217_00940.csv           6 9.60000000000002
+    ## 62 data_in//20181217_00940.csv           7            10.96
+    ## 71 data_in//20181217_00940.csv           8             11.6
+    ## 25 data_in//20181217_00941.csv           1            17.52
+    ## 35 data_in//20181217_00941.csv           2             39.6
+    ## 45 data_in//20181217_00941.csv           3            14.72
+    ## 54 data_in//20181217_00941.csv           4            25.12
+    ## 63 data_in//20181217_00941.csv           5            25.84
+    ## 72 data_in//20181217_00941.csv           6             20.8
+    ## 81 data_in//20181217_00941.csv           7            24.72
+    ## 26 data_in//20181217_00942.csv           1            17.68
+    ## 36 data_in//20181217_00942.csv           2            19.92
+    ## 46 data_in//20181217_00942.csv           3            14.48
+    ## 55 data_in//20181217_00942.csv           4            17.52
+    ## 64 data_in//20181217_00942.csv           5            19.68
+    ##           waggle_sd
+    ## 2              <NA>
+    ## 3              <NA>
+    ## 4              <NA>
+    ## 21             <NA>
+    ## 31             <NA>
+    ## 41 2.29102597104439
+    ## 5  5.14773736703807
+    ## 22             <NA>
+    ## 32             <NA>
+    ## 42 2.20617315730203
+    ## 51             <NA>
+    ## 6              <NA>
+    ## 23             <NA>
+    ## 33             <NA>
+    ## 43             <NA>
+    ## 52             <NA>
+    ## 61             <NA>
+    ## 7              <NA>
+    ## 8              <NA>
+    ## 9              <NA>
+    ## 10             <NA>
+    ## 11             <NA>
+    ## 12             <NA>
+    ## 13             <NA>
+    ## 14             <NA>
+    ## 24             <NA>
+    ## 34             <NA>
+    ## 44             <NA>
+    ## 53             <NA>
+    ## 62             <NA>
+    ## 71             <NA>
+    ## 25             <NA>
+    ## 35             <NA>
+    ## 45             <NA>
+    ## 54             <NA>
+    ## 63             <NA>
+    ## 72             <NA>
+    ## 81             <NA>
+    ## 26             <NA>
+    ## 36             <NA>
+    ## 46             <NA>
+    ## 55             <NA>
+    ## 64             <NA>

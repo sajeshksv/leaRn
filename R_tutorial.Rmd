@@ -275,6 +275,15 @@ waggleSummary = function(x){
   evenRows <- subsetData[as.numeric(rownames(subsetData)) %% 2 == 0,]
   endTimes <- evenRows$Time
   
+  # the following series of steps need to be done IF AND ONLY IF the number of start   
+  # time entries and the number of end time entries are equal. Hence, we introduce a 
+  # check in place, instructing R to skip this iteration of the for loop when this  
+  # equality condition is not satisfied.
+    
+  if(length(startTimes) != length(endTimes)){
+    next
+    }
+  
   # make a subset table with the times
   timeTable <- data.frame(startTimes, endTimes)
   
