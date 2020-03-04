@@ -2,7 +2,9 @@
 title: "ICREEE Weekly Stats Discussion"
 author: "Sajesh Vijayan"
 date: "4 March 2020"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE} 
