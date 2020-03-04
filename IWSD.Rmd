@@ -1,0 +1,35 @@
+---
+title: "ICREEE Weekly Stats Discussion"
+author: "Sajesh Vijayan"
+date: "4 March 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(echo = TRUE)
+devtools::source_gist("c83e078bf8c81b035e32c3fc0cf04ee8", 
+                      filename = 'render_toc.R')
+```
+
+## Table of Contents
+
+```{r toc, echo=FALSE} 
+render_toc("IWSD.Rmd")
+```
+
+## 21 Feb, 2020: Introduction to linear regression
+### Video link
+[StatQuest: Linear Models Pt.1 - Linear Regression](https://youtu.be/nk2CQITm_eo)
+
+## 29 Feb, 2020: Assumptions of linear regression, type 1 and type 2 errors and statistical power
+### Moderator: Asmi
+### Video links: 
+[assumptions of linear regression](https://www.youtube.com/watch?v=iMdtTCX2Q70&t=146s)
+
+[type 1 type 2 error and power of test](https://www.youtube.com/watch?v=7mE-K_w1v90)
+
+[type 2 - one tailed](https://www.youtube.com/watch?v=BJZpx7Mdde4)
+
+[type 2 - two tailed](https://www.youtube.com/watch?v=NbeHZp23ubs)
+
+## 06 Mar, 2020: Paper discussion on Type 1 and Type 2 errors
